@@ -23,7 +23,132 @@ STEP 7: Use cross tabulation method to quantitatively analyze the relationship b
 STEP 8: Use heatmap method of representation to show relationships between two variables, one plotted on each axis.
 
 ## CODING AND OUTPUT
-        <<INCLUDE YOUR CODING AND OUTPUT SCREENSHOTS>>
+
+### Name : SAKTHISWAR S
+### Reg No : 212222230127
+
+```
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+dt=pd.read_csv("/content/titanic_dataset.csv")
+dt
+```
+![img](out.png)
+
+
+```
+dt.info()
+```
+![img](out1.png)
+
+```
+dt.shape
+```
+![img](out2.png)
+
+```
+dt.set_index("PassengerId",inplace=True)
+dt.describe()
+```
+![img](out3.png)
+
+
+```
+dt.nunique()
+```
+![img](out4.png)
+
+```
+dt["Survived"].value_counts()
+```
+![img](out5.png)
+
+
+```
+per=(dt["Survived"].value_counts()/dt.shape[0]*100).round(2)
+per
+```
+![img](out6.png)
+
+```
+sns.countplot(data=dt,x="Survived")
+```
+![img](out7.png)
+
+
+```
+dt
+```
+![img](out8.png)
+
+
+```
+dt.Pclass.unique()
+```
+![img](out9.png)
+
+
+```
+dt.rename(columns={'Sex':'Gender'},inplace=True)
+dt
+```
+![img](out10.png)
+
+```
+sns.catplot(x="Gender",col="Survived",kind="count",data=dt,height=5,aspect=.7)
+```
+![img](out11.png)
+
+
+```
+sns.catplot(x='Survived',hue="Gender",data=dt,kind='count')
+```
+![img](out12.png)
+
+
+```
+dt.boxplot(column="Age",by="Survived")
+```
+![img](out13.png)
+
+
+```
+sns.scatterplot(x=dt["Age"],y=dt["Fare"])
+```
+![img](out14.png)
+
+
+```
+sns.jointplot(x="Age",y="Fare",data=dt)
+```
+![img](out15.png)
+
+
+```
+fig,ax1=plt.subplots(figsize=(8,5))
+sns.boxplot(ax=ax1,x="Pclass",y="Age",hue="Gender",data=dt)
+```
+![img](out16.png)
+
+```
+sns.catplot(data=dt,col="Survived",x="Gender",hue="Pclass",kind="count")
+```
+![img](out17.png)
+
+
+```
+corr=dt.corr()
+sns.heatmap(corr,annot=True)
+```
+![img](out18.png)
+
+
+```
+sns.pairplot(dt)
+```
+![img](out19.png)
 
 # RESULT
-        <<INCLUDE YOUR RESULT HERE>>
+       Thus, the Exploratory Data Analysis on the given data set was performed successfully. 
